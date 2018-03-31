@@ -8,7 +8,7 @@ Yarn version:
   1.5.1
 
 Node version: 
-  8.10.0
+  8.11.1
 
 Platform: 
   darwin x64
@@ -64,6 +64,7 @@ npm manifest:
       "vue": "^2.5.16",
       "vue-loader": "^14.2.2",
       "vue-router": "^3.0.1",
+      "vue-template-compiler": "^2.5.16",
       "vuex": "^3.0.1"
     }
   }
@@ -1516,6 +1517,10 @@ Lockfile:
     version "0.1.4"
     resolved "http://registry.npm.taobao.org/date-now/download/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
   
+  de-indent@^1.0.2:
+    version "1.0.2"
+    resolved "http://registry.npm.taobao.org/de-indent/download/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
+  
   debug@2.6.8:
     version "2.6.8"
     resolved "http://registry.npm.taobao.org/debug/download/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
@@ -2264,7 +2269,7 @@ Lockfile:
       hoek "4.x.x"
       sntp "2.x.x"
   
-  he@1.1.x:
+  he@1.1.x, he@^1.1.0:
     version "1.1.1"
     resolved "http://registry.npm.taobao.org/he/download/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
   
@@ -4681,6 +4686,13 @@ Lockfile:
       hash-sum "^1.0.2"
       loader-utils "^1.0.2"
   
+  vue-template-compiler@^2.5.16:
+    version "2.5.16"
+    resolved "http://registry.npm.taobao.org/vue-template-compiler/download/vue-template-compiler-2.5.16.tgz#93b48570e56c720cdf3f051cc15287c26fbd04cb"
+    dependencies:
+      de-indent "^1.0.2"
+      he "^1.1.0"
+  
   vue-template-es2015-compiler@^1.6.0:
     version "1.6.0"
     resolved "http://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
@@ -4936,7 +4948,7 @@ Trace:
   Exit code: 2
   Command: sh
   Arguments: -c webpack --config webpack.prod.js
-  Directory: /Users/canonhu/Desktop/dev/vue/webpack
+  Directory: /Users/canonhu/demo/vue-vuex-vue-loader-Demo
   Output:
   
       at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
