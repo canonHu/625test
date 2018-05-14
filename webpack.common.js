@@ -1,6 +1,8 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractLess = new ExtractTextPlugin('./style/style.css');
 
 module.exports = {
     entry: {
@@ -12,20 +14,40 @@ module.exports = {
     },
 
     plugins: [
+        ExtractLess,
         new CleanWebpackPlugin(['dist']),
-        new HtmlWebpackPlugin({
-            title: 'unity title canonHu',
-            template: 'index.ejs'
-        })
+        // new HtmlWebpackPlugin({
+        //     title: 'unity title canonHu',
+        //     template: 'index.ejs'
+        // })
     ],
 
     module: {
         rules: [
             {
                 test: /\.vue$/,
-                use: [
-                    'vue-loader'
-                ]
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        'less': ExtractTextPlugin.extract({
+                            use: [
+                                {
+                                    loader: 'css-loader',
+                                    options: {
+                                        sourceMap: false,
+                                        minimize: true //css压缩
+                                    }
+                                },
+                                {
+                                    loader: 'less-loader',
+                                    options: {
+                                        sourceMap: false
+                                    }
+                                }
+                            ]
+                        })
+                    },
+                }
             },
             {
                 test: /\.js$/,
@@ -34,12 +56,8 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(css|less)$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'less-loader'
-                ]
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
@@ -69,7 +87,7 @@ module.exports = {
     },
 
     output: {
-        filename: '[name].[chunkhash].bundle.js',
+        filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     }
 };

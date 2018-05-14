@@ -4,7 +4,7 @@ import TestHome from '../components/test-home.vue';
 export default [
     {
         name: 'testHome',
-        path: '/home',
+        path: '/',
         component: TestHome,
         meta: { title: '首页' },
     },
