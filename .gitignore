@@ -4,4 +4,4 @@ dist/
 
 # file
 yarn.lock
-yarn-error.log
+*.log
