@@ -1,5 +1,5 @@
 const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ExtractLess = new ExtractTextPlugin('./style/style.css');
@@ -16,10 +16,10 @@ module.exports = {
     plugins: [
         ExtractLess,
         new CleanWebpackPlugin(['dist']),
-        // new HtmlWebpackPlugin({
-        //     title: 'unity title canonHu',
-        //     template: 'index.ejs'
-        // })
+        new HtmlWebpackPlugin({
+            title: 'unity title canonHu',
+            template: 'index.ejs'
+        })
     ],
 
     module: {
